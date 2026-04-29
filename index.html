@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>BROKENPAC RP - Painel JBL</title>
+    <style>
+        body { background: #0b0b0f; color: #fff; font-family: sans-serif; text-align: center; padding: 20px; }
+        .box { background: #15151d; max-width: 500px; margin: 40px auto; padding: 30px; border-radius: 15px; border-top: 5px solid #ff4444; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        h1 { color: #ff4444; letter-spacing: 2px; }
+        .musica { background: #222; margin: 10px 0; padding: 15px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #333; }
+        .btn { background: #3498db; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>BROKENPAC RP</h1>
+        <p style="opacity: 0.6; font-size: 12px;">NOVA CITY - GERADOR DE LINKS</p>
+        <div id="lista"></div>
+    </div>
+
+    <script>
+        const usuario = "Alex18jr"; 
+        const repo = "jbl-brokenpac";
+        
+        // ADICIONE OS NOMES DAS MÚSICAS QUE VOCÊ UPOU AQUI:
+        const musicas = [
+            "musica1.mp3",
+            "musica2.mp3"
+        ];
+
+        const listaDiv = document.getElementById('lista');
+        musicas.forEach(m => {
+            const url = `https://raw.githubusercontent.com/${usuario}/${repo}/main/${m}`;
+            listaDiv.innerHTML += `
+                <div class="musica">
+                    <span>${m}</span>
+                    <button class="btn" onclick="copiar('${url}')">COPIAR LINK</button>
+                </div>
+            `;
+        });
+
+        function copiar(u) {
+            navigator.clipboard.writeText(u);
+            alert("Link copiado para o seu /jbl!");
+        }
+    </script>
+</body>
+</html>
